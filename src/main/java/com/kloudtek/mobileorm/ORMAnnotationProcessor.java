@@ -25,11 +25,11 @@ public class ORMAnnotationProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         final Set<? extends Element> tableObjs = roundEnv.getElementsAnnotatedWith(DbTable.class);
         for (Element tableObj : tableObjs) {
-            String cName = ((Symbol.ClassSymbol) tableObj).getQualifiedName().toString() + "ORMPersister";
+            String cName = ((Symbol.ClassSymbol) tableObj).getQualifiedName().toString() + "DAO";
             try {
                 JavaFileObject jfo = processingEnv.getFiler().createSourceFile(cName);
 
-                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "creating source file: " + jfo.toUri());
+                processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "creating dao file: " + jfo.toUri());
 
                 Writer writer = jfo.openWriter();
                 writeClass(tableObj,writer);
