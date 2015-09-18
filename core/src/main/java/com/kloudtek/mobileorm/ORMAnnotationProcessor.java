@@ -16,12 +16,12 @@ import java.util.Set;
 /**
  * Created by yannick on 9/17/15.
  */
-@SupportedAnnotationTypes({"com.kloudtek.mobileorm.DbTable"})
+@SupportedAnnotationTypes({"com.kloudtek.mobileorm.*"})
 @SupportedSourceVersion(SourceVersion.RELEASE_6)
 public class ORMAnnotationProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        final Set<? extends Element> tableObjs = roundEnv.getElementsAnnotatedWith(DbTable.class);
+        final Set<? extends Element> tableObjs = roundEnv.getElementsAnnotatedWith(Table.class);
         for (Element tableObj : tableObjs) {
             final DAOObject daoObject = new DAOObject(tableObj);
             processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "Processing " + daoObject.getClassName());

@@ -1,6 +1,7 @@
 package com.kloudtek.mobileorm.examples;
 
-import com.kloudtek.mobileorm.DbTable;
+import com.kloudtek.mobileorm.Column;
+import com.kloudtek.mobileorm.Table;
 import com.kloudtek.mobileorm.ORMAnnotationProcessor;
 
 import java.io.Serializable;
@@ -9,15 +10,25 @@ import java.util.Date;
 /**
  * Created by yannick on 9/17/15.
  */
-@DbTable("dbclass1")
+@Table("dbclass1")
 public class DbClass1 {
+    @Column
     private Long id;
+    @Column
+    private int number;
+    @Column
     private Date date;
+    @Column
     private Date timestamp;
+    @Column
     private byte[] data;
+    @Column
     private Serializable serializableData;
+    @Column
     private Test enumOrd;
+    @Column
     private Test enumStr;
+    @Column
     private SomeObj someObj;
 
     public enum Test {
