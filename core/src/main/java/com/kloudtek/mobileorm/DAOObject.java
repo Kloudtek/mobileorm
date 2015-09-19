@@ -59,6 +59,8 @@ public class DAOObject {
     public void writeSource(Writer w) throws IOException {
         w.write("package " + pkg + ";\n\n");
         w.write("import com.kloudtek.mobileorm.DAO;\n");
+        w.write("import java.sql.ResultSet;\n");
+        w.write("import java.sql.Statement;\n");
         w.write("\npublic class " + daoClassName + " implements DAO<" + className + "> {\n");
         w.write("\tpublic String getCreateSQL() {\n");
         w.write("\t\treturn \"CREATE TABLE " + tableName + " ( ");
@@ -71,6 +73,15 @@ public class DAOObject {
             }
         }
         w.write(" );\";\n");
+        w.write("\t}\n");
+        w.write("\tpublic "+className+" toObj( ResultSet resultSet ) {\n");
+        w.write("\t\treturn null;\n");
+        w.write("\t}\n");
+        w.write("\tpublic Statement toInsert( "+className+" obj ) {\n");
+        w.write("\t\treturn null;\n");
+        w.write("\t}\n");
+        w.write("\tpublic Statement toUpdate( "+className+" obj ) {\n");
+        w.write("\t\treturn null;\n");
         w.write("\t}\n");
         w.write("}\n");
     }
